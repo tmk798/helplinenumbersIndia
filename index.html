@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Helpline Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Indian Helpline Numbers</h1>
+        <input type="text" id="searchInput" placeholder="Search helpline numbers...">
+        <ul id="helplineList"></ul>
+    </div>
+    <footer class="footer">
+        <p>Credits to @tmk for the website.</p>
+        <p>For emergencies, download the <a href="https://play.google.com/store/apps/details?id=com.divoc&hl=en_IN&gl=US" target="_blank">112 India app</a>.</p>
+        <p>For more helpline numbers, visit the <a href="https://india.gov.in/helpline-numbers" target="_blank">Government of India helpline website</a>.</p>
+    </footer>
+    <script>
+        const helplineNumbers = [
+            { category: 'Police', number: '100' },
+            { category: 'Fire', number: '101' },
+            { category: 'Ambulance', number: '102' },
+            { category: 'Women Helpline', number: '181' },
+            // Add more helpline numbers here...
+            { category: 'Corona (COVID-19) Helpline', number: '011-23978046 OR 1075' },
+            { category: 'Maharashtra COVID Helpline', number: '022-22027990' },
+            { category: 'Mumbai Important Numbers', number: '' },
+            { category: 'Police', number: '100 , 112 OR 022-22621855' },
+            { category: 'Fire', number: '101 , 022-23085991 / 992' },
+            { category: 'Ambulance', number: '102 , 1298 , 022-24308888' },
+            { category: "Women's Helpline", number: '022-22633333 , 22620111' },
+            { category: 'Child Helpline', number: '1098' },
+            { category: 'Blood Bank', number: '104 , 1910' },
+            { category: 'Disaster Helpline', number: '022-22694725' },
+            { category: 'Tourist Police', number: '022-22621855' },
+            { category: 'AIDS Helpline', number: '1097' },
+            { category: 'Anti Poison (Delhi)', number: '1066' },
+            { category: 'Infoline', number: '1090' },
+            { category: 'Water Supply Contact', number: '1800222310' },
+            { category: 'Electricity Supply', number: '1800-102-3435' },
+            // Add more Mumbai and Maharashtra helpline numbers here...
+        ];
+
+        function displayHelplineNumbers() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const helplineList = document.getElementById('helplineList');
+            helplineList.innerHTML = '';
+
+            helplineNumbers.forEach(helpline => {
+                if (helpline.category.toLowerCase().includes(searchInput) || helpline.number.includes(searchInput)) {
+                    const li = document.createElement('li');
+                    li.textContent = `${helpline.category}: ${helpline.number}`;
+                    helplineList.appendChild(li);
+                    li.addEventListener('click', () => {
+                        window.location.href = `tel:${helpline.number.replace(/\D/g, '')}`;
+                    });
+                }
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('input', displayHelplineNumbers);
+
+        displayHelplineNumbers();
+    </script>
+</body>
+</html>
